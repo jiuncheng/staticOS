@@ -42,7 +42,7 @@ jobs:
           build_tags+=("latest")
 
           echo "Generated tags: "
-          for TAG in "${BUILD_TAGS[@]}"; do
+          for TAG in "${build_tags[@]}"; do
               echo "${TAG}"
           done
 
