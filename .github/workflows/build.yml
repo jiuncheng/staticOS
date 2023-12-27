@@ -12,8 +12,12 @@ env:
 
 jobs:
   build-image: 
-    name: build image
+    name: Build Image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
     strategy:
       fail-fast: false
       matrix:
@@ -25,7 +29,7 @@ jobs:
       - name: Checkout Push to Registry action
         uses: actions/checkout@v4
 
-      - name: Generate tags
+      - name: Generate Tags
         id: generate-tags
         shell: bash
         run: | 
@@ -36,6 +40,11 @@ jobs:
 
           build_tags+=("${TIMESTAMP}")
           build_tags+=("latest")
+
+          echo "Generated tags: "
+          for TAG in "${BUILD_TAGS[@]}"; do
+              echo "${TAG}"
+          done
 
           echo "build_tags=${build_tags[*]}" >> $GITHUB_OUTPUT
 
