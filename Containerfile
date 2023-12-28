@@ -4,7 +4,7 @@ COPY usr /usr
 
 RUN rpm-ostree install fish neovim gnome-console libgda libgda-sqlite
 RUN rpm-ostree override remove gnome-terminal gnome-terminal-nautilus \
-    gnome-shell-extension-background-logo firefox firefox-langpacks
+    firefox firefox-langpacks
 
 RUN rm -rf /tmp/* /var/* && \  
     ostree container commit && \
