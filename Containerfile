@@ -2,7 +2,7 @@ FROM ghcr.io/ublue-os/silverblue-main:latest AS staticOS
 
 COPY usr /usr
 
-RUN rpm-ostree install fish neovim gnome-console libgda libgda-sqlite
+RUN rpm-ostree install fish neovim gnome-console libgda libgda-sqlite aria2
 RUN rpm-ostree override remove gnome-terminal gnome-terminal-nautilus \
     firefox firefox-langpacks
 
